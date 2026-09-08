@@ -35,10 +35,10 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     <div className="grid min-h-screen md:grid-cols-2">
       <div className="relative flex flex-col justify-between overflow-hidden bg-auth-panel px-6 py-6 text-auth-panel-foreground sm:px-8 sm:py-8 md:px-12 md:py-12">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-8 items-center justify-center rounded-md border border-auth-accent font-serif text-sm text-auth-accent">
+          <div className="flex size-8 items-center justify-center rounded-md border border-auth-accent text-sm font-semibold text-auth-accent">
             A
           </div>
-          <span className="text-sm font-bold tracking-[0.1em] uppercase">Atelier</span>
+          <span className="text-sm font-semibold tracking-[0.1em] uppercase">Atelier</span>
         </div>
 
         <div className="hidden md:block">
@@ -46,9 +46,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <div className="max-w-md">
-          <h2 className="font-serif text-2xl leading-snug sm:text-3xl md:text-4xl">
+          <h2 className="text-2xl leading-snug font-semibold sm:text-3xl md:text-4xl">
             Every client relationship,{" "}
-            <em className="font-serif text-auth-accent italic">crafted</em> with intention.
+            <em className="text-auth-accent italic">crafted</em> with intention.
           </h2>
           <p className="mt-4 hidden max-w-sm text-sm text-auth-panel-muted md:block">
             Customer, order, and revenue management for fashion designers who care about the details.
