@@ -628,6 +628,7 @@ export type Database = {
           production_status: Database["public"]["Enums"]["production_status"]
           profit: number | null
           selling_price: number
+          size: string | null
           total_cost: number
           total_paid: number
           updated_at: string
@@ -650,6 +651,7 @@ export type Database = {
           production_status?: Database["public"]["Enums"]["production_status"]
           profit?: number | null
           selling_price?: number
+          size?: string | null
           total_cost?: number
           total_paid?: number
           updated_at?: string
@@ -672,6 +674,7 @@ export type Database = {
           production_status?: Database["public"]["Enums"]["production_status"]
           profit?: number | null
           selling_price?: number
+          size?: string | null
           total_cost?: number
           total_paid?: number
           updated_at?: string

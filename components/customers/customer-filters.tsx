@@ -48,6 +48,7 @@ export function CustomerFilters({ sources }: { sources: Source[] }) {
       <Select
         value={searchParams.get("lifecycle") ?? "all"}
         onValueChange={(v) => updateParam("lifecycle", v === "all" ? null : v)}
+        items={{ all: "All statuses", ...LIFECYCLE_STATUS_LABELS }}
       >
         <SelectTrigger className="w-full sm:w-40">
           <SelectValue placeholder="All statuses" />
@@ -65,6 +66,7 @@ export function CustomerFilters({ sources }: { sources: Source[] }) {
       <Select
         value={searchParams.get("sourceId") ?? "all"}
         onValueChange={(v) => updateParam("sourceId", v === "all" ? null : v)}
+        items={{ all: "All sources", ...Object.fromEntries(sources.map((s) => [s.id, s.name])) }}
       >
         <SelectTrigger className="w-full sm:w-40">
           <SelectValue placeholder="All sources" />
@@ -82,6 +84,7 @@ export function CustomerFilters({ sources }: { sources: Source[] }) {
       <Select
         value={searchParams.get("sort") ?? "newest"}
         onValueChange={(v) => updateParam("sort", v === "newest" ? null : v)}
+        items={{ newest: "Newest first", oldest: "Oldest first", name_asc: "Name A–Z", name_desc: "Name Z–A" }}
       >
         <SelectTrigger className="w-full sm:w-40">
           <SelectValue placeholder="Sort" />

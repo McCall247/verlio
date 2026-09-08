@@ -21,11 +21,13 @@ export function OrderForm({
   orderId,
   defaultValues,
   lockCustomer,
+  currencySymbol,
 }: {
   customers: CustomerOption[]
   orderId?: string
   defaultValues?: Partial<OrderInput>
   lockCustomer?: boolean
+  currencySymbol: string
 }) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
@@ -40,6 +42,7 @@ export function OrderForm({
     defaultValues: {
       customerId: "",
       outfitName: "",
+      size: "",
       description: "",
       orderDate: new Date().toISOString().slice(0, 10),
       dueDate: "",
@@ -85,11 +88,17 @@ export function OrderForm({
           <FieldError errors={errors.customerId ? [errors.customerId] : undefined} />
         </Field>
 
-        <Field>
-          <FieldLabel htmlFor="outfitName">Outfit / design name</FieldLabel>
-          <Input id="outfitName" placeholder="Bridal Gown" {...register("outfitName")} />
-          <FieldError errors={errors.outfitName ? [errors.outfitName] : undefined} />
-        </Field>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field>
+            <FieldLabel htmlFor="outfitName">Outfit / design name</FieldLabel>
+            <Input id="outfitName" placeholder="Bridal Gown" {...register("outfitName")} />
+            <FieldError errors={errors.outfitName ? [errors.outfitName] : undefined} />
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="size">Size</FieldLabel>
+            <Input id="size" placeholder="UK 12, or custom measurements" {...register("size")} />
+          </Field>
+        </div>
 
         <Field>
           <FieldLabel htmlFor="description">Description</FieldLabel>
@@ -110,7 +119,19 @@ export function OrderForm({
 
         <Field>
           <FieldLabel htmlFor="sellingPrice">Selling price</FieldLabel>
-          <Input id="sellingPrice" type="number" step="0.01" min="0" {...register("sellingPrice")} />
+          <div className="relative">
+            <span className="pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2 text-sm text-muted-foreground">
+              {currencySymbol}
+            </span>
+            <Input
+              id="sellingPrice"
+              type="number"
+              step="0.01"
+              min="0"
+              className="pl-7"
+              {...register("sellingPrice")}
+            />
+          </div>
           <FieldError errors={errors.sellingPrice ? [errors.sellingPrice] : undefined} />
         </Field>
 

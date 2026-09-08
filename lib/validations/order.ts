@@ -4,6 +4,7 @@ import { PAYMENT_METHODS, PRODUCTION_STATUSES } from "@/lib/constants"
 export const orderSchema = z.object({
   customerId: z.string().min(1, "Select a customer"),
   outfitName: z.string().trim().min(2, "Outfit name is required"),
+  size: z.string().trim().optional(),
   description: z.string().trim().optional(),
   orderDate: z.string().min(1, "Order date is required"),
   dueDate: z.string().optional(),

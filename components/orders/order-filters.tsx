@@ -44,6 +44,7 @@ export function OrderFilters() {
       <Select
         value={searchParams.get("productionStatus") ?? "all"}
         onValueChange={(v) => updateParam("productionStatus", v === "all" ? null : v)}
+        items={{ all: "All production", ...PRODUCTION_STATUS_LABELS }}
       >
         <SelectTrigger className="w-full sm:w-44">
           <SelectValue placeholder="All production" />
@@ -61,6 +62,7 @@ export function OrderFilters() {
       <Select
         value={searchParams.get("paymentStatus") ?? "all"}
         onValueChange={(v) => updateParam("paymentStatus", v === "all" ? null : v)}
+        items={{ all: "All payments", ...PAYMENT_STATUS_LABELS }}
       >
         <SelectTrigger className="w-full sm:w-40">
           <SelectValue placeholder="All payments" />
@@ -78,6 +80,7 @@ export function OrderFilters() {
       <Select
         value={searchParams.get("sort") ?? "newest"}
         onValueChange={(v) => updateParam("sort", v === "newest" ? null : v)}
+        items={{ newest: "Newest first", oldest: "Oldest first", due_soon: "Due soon", price_desc: "Highest price" }}
       >
         <SelectTrigger className="w-full sm:w-40">
           <SelectValue placeholder="Sort" />

@@ -22,6 +22,7 @@ export async function createOrder(values: unknown) {
       customer_id: parsed.data.customerId,
       order_number: "", // assigned by the assign_order_number trigger
       outfit_name: parsed.data.outfitName,
+      size: parsed.data.size || null,
       description: parsed.data.description || null,
       order_date: parsed.data.orderDate,
       due_date: parsed.data.dueDate || null,
@@ -54,6 +55,7 @@ export async function updateOrder(orderId: string, values: unknown) {
     .update({
       customer_id: parsed.data.customerId,
       outfit_name: parsed.data.outfitName,
+      size: parsed.data.size || null,
       description: parsed.data.description || null,
       order_date: parsed.data.orderDate,
       due_date: parsed.data.dueDate || null,

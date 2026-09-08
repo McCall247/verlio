@@ -19,7 +19,7 @@ export function ProductionStatusControl({ orderId, status }: { orderId: string; 
   }
 
   return (
-    <Select value={status} onValueChange={handleChange} disabled={isPending}>
+    <Select value={status} onValueChange={handleChange} disabled={isPending} items={PRODUCTION_STATUS_LABELS}>
       <SelectTrigger className="w-full sm:w-56">
         <SelectValue />
       </SelectTrigger>

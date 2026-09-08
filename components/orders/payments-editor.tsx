@@ -132,7 +132,7 @@ export function PaymentsEditor({
             control={control}
             name="method"
             render={({ field }) => (
-              <Select value={field.value || undefined} onValueChange={field.onChange}>
+              <Select value={field.value || undefined} onValueChange={field.onChange} items={PAYMENT_METHOD_LABELS}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Method (optional)" />
                 </SelectTrigger>

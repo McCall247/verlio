@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { OrderForm } from "@/components/orders/order-form"
 import { getOrderDetail } from "@/lib/queries/orders"
 import { listAllCustomersForPicker } from "@/lib/queries/customers"
+import { getCurrentBusiness } from "@/lib/auth/dal"
 
 export const metadata: Metadata = { title: "Edit order — Atelier" }
 
@@ -13,7 +14,11 @@ export default async function EditOrderPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const [detail, customers] = await Promise.all([getOrderDetail(id), listAllCustomersForPicker()])
+  const [business, detail, customers] = await Promise.all([
+    getCurrentBusiness(),
+    getOrderDetail(id),
+    listAllCustomersForPicker(),
+  ])
 
   if (!detail) notFound()
   const { order } = detail
@@ -28,9 +33,11 @@ export default async function EditOrderPage({
           <OrderForm
             customers={customers}
             orderId={order.id}
+            currencySymbol={business.currency_symbol}
             defaultValues={{
               customerId: order.customer_id,
               outfitName: order.outfit_name,
+              size: order.size ?? "",
               description: order.description ?? "",
               orderDate: order.order_date,
               dueDate: order.due_date ?? "",

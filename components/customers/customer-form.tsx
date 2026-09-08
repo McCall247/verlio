@@ -115,7 +115,11 @@ export function CustomerForm({
             control={control}
             name="acquisitionSourceId"
             render={({ field }) => (
-              <Select value={field.value || undefined} onValueChange={field.onChange}>
+              <Select
+                value={field.value || undefined}
+                onValueChange={field.onChange}
+                items={Object.fromEntries(sources.map((s) => [s.id, s.name]))}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a source" />
                 </SelectTrigger>

@@ -123,6 +123,7 @@ export default async function OrderDetailPage({
             <CardContent className="flex flex-col gap-3 text-sm">
               <DetailRow label="Order date" value={formatDate(order.order_date)} />
               <DetailRow label="Due date" value={order.due_date ? formatDate(order.due_date) : "—"} />
+              {order.size && <DetailRow label="Size" value={order.size} />}
               {order.description && <DetailRow label="Description" value={order.description} />}
               {order.notes && <DetailRow label="Notes" value={order.notes} />}
             </CardContent>
