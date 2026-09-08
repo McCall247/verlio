@@ -3,11 +3,14 @@
 import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { ArrowRightIcon } from "lucide-react"
 import { updatePassword } from "@/actions/auth"
 import { resetPasswordSchema, type ResetPasswordInput } from "@/lib/validations/auth"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Field, FieldGroup, FieldLabel, FieldError } from "@/components/ui/field"
+import { PasswordInput } from "@/components/auth/password-input"
+
+const LABEL_CLASS = "text-xs font-medium tracking-[0.1em] text-muted-foreground uppercase"
 
 export function ResetPasswordForm() {
   const [isPending, startTransition] = useTransition()
@@ -36,8 +39,10 @@ export function ResetPasswordForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="password">New password</FieldLabel>
-          <Input id="password" type="password" {...register("password")} />
+          <FieldLabel htmlFor="password" className={LABEL_CLASS}>
+            New password
+          </FieldLabel>
+          <PasswordInput id="password" {...register("password")} />
           <FieldError errors={errors.password ? [errors.password] : undefined} />
         </Field>
 
@@ -45,6 +50,7 @@ export function ResetPasswordForm() {
 
         <Button type="submit" disabled={isPending} className="w-full">
           {isPending ? "Updating…" : "Update password"}
+          {!isPending && <ArrowRightIcon data-icon="inline-end" className="size-4" />}
         </Button>
       </FieldGroup>
     </form>

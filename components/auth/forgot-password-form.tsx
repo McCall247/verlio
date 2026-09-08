@@ -4,12 +4,14 @@ import { useState, useTransition } from "react"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { MailCheckIcon } from "lucide-react"
+import { ArrowRightIcon, MailCheckIcon } from "lucide-react"
 import { requestPasswordReset } from "@/actions/auth"
 import { forgotPasswordSchema, type ForgotPasswordInput } from "@/lib/validations/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Field, FieldGroup, FieldLabel, FieldError } from "@/components/ui/field"
+
+const LABEL_CLASS = "text-xs font-medium tracking-[0.1em] text-muted-foreground uppercase"
 
 export function ForgotPasswordForm() {
   const [isPending, startTransition] = useTransition()
@@ -40,8 +42,8 @@ export function ForgotPasswordForm() {
   if (sent) {
     return (
       <div className="flex flex-col items-center gap-3 text-center">
-        <div className="flex size-12 items-center justify-center rounded-full bg-muted">
-          <MailCheckIcon className="size-6 text-muted-foreground" />
+        <div className="flex size-12 items-center justify-center rounded-full bg-auth-accent/10">
+          <MailCheckIcon className="size-6 text-auth-accent" />
         </div>
         <p className="text-sm text-muted-foreground">
           If an account exists for that email, we&apos;ve sent a link to reset your password.
@@ -57,7 +59,9 @@ export function ForgotPasswordForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
+          <FieldLabel htmlFor="email" className={LABEL_CLASS}>
+            Email
+          </FieldLabel>
           <Input id="email" type="email" placeholder="you@studio.com" {...register("email")} />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
         </Field>
@@ -66,6 +70,7 @@ export function ForgotPasswordForm() {
 
         <Button type="submit" disabled={isPending} className="w-full">
           {isPending ? "Sending…" : "Send reset link"}
+          {!isPending && <ArrowRightIcon data-icon="inline-end" className="size-4" />}
         </Button>
       </FieldGroup>
 

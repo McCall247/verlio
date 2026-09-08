@@ -1,22 +1,18 @@
 import type { Metadata } from "next"
 import { MailCheckIcon } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = { title: "Check your email — Atelier CRM" }
 
 export default function CheckEmailPage() {
   return (
-    <Card>
-      <CardHeader className="items-center text-center">
-        <div className="mb-2 flex size-12 items-center justify-center rounded-full bg-muted">
-          <MailCheckIcon className="size-6 text-muted-foreground" />
-        </div>
-        <CardTitle className="text-xl">Check your inbox</CardTitle>
-        <CardDescription>
-          We sent you a confirmation link. Click it to activate your account, then log in.
-        </CardDescription>
-      </CardHeader>
-      <CardContent />
-    </Card>
+    <div className="flex flex-col items-center gap-3 text-center">
+      <div className="flex size-12 items-center justify-center rounded-full bg-auth-accent/10">
+        <MailCheckIcon className="size-6 text-auth-accent" />
+      </div>
+      <h1 className="font-serif text-2xl text-foreground">Check your inbox</h1>
+      <p className="text-sm text-muted-foreground">
+        We sent you a confirmation link. Click it to activate your account, then log in.
+      </p>
+    </div>
   )
 }

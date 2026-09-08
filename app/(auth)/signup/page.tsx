@@ -1,19 +1,18 @@
 import type { Metadata } from "next"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AuthHeader } from "@/components/auth/auth-header"
 import { SignupForm } from "@/components/auth/signup-form"
 
 export const metadata: Metadata = { title: "Create your studio — Atelier CRM" }
 
 export default function SignupPage() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-xl">Set up your studio</CardTitle>
-        <CardDescription>Start managing customers, orders, and revenue in one place.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <SignupForm />
-      </CardContent>
-    </Card>
+    <>
+      <AuthHeader
+        eyebrow="Get started"
+        title="Set up your studio"
+        description="Start managing customers, orders, and revenue in one place."
+      />
+      <SignupForm />
+    </>
   )
 }

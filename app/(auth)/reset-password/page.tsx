@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AuthHeader } from "@/components/auth/auth-header"
 import { ResetPasswordForm } from "@/components/auth/reset-password-form"
 import { createClient } from "@/lib/supabase/server"
 
@@ -26,20 +26,15 @@ export default async function ResetPasswordPage({
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-xl">Set a new password</CardTitle>
-        <CardDescription>Choose a new password for your account.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        {linkValid ? (
-          <ResetPasswordForm />
-        ) : (
-          <p className="text-sm text-muted-foreground">
-            This reset link is invalid or has expired. Request a new one from the login page.
-          </p>
-        )}
-      </CardContent>
-    </Card>
+    <>
+      <AuthHeader eyebrow="Reset password" title="Set a new password" description="Choose a new password for your account." />
+      {linkValid ? (
+        <ResetPasswordForm />
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          This reset link is invalid or has expired. Request a new one from the login page.
+        </p>
+      )}
+    </>
   )
 }
