@@ -38,7 +38,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <div className="flex size-8 items-center justify-center rounded-md border border-auth-accent font-serif text-sm text-auth-accent">
             A
           </div>
-          <span className="text-sm font-bold tracking-[0.1em] uppercase">Atelier CRM</span>
+          <span className="text-sm font-bold tracking-[0.1em] uppercase">Atelier</span>
         </div>
 
         <div className="hidden md:block">

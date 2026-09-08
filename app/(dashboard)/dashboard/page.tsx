@@ -5,7 +5,7 @@ import { getDashboardSummary, type DashboardPeriod } from "@/lib/queries/dashboa
 import { getAuthedProfile, getCurrentBusiness } from "@/lib/auth/dal"
 import { formatMoney } from "@/lib/format"
 
-export const metadata: Metadata = { title: "Dashboard — Atelier CRM" }
+export const metadata: Metadata = { title: "Dashboard — Atelier" }
 
 const VALID_PERIODS: DashboardPeriod[] = ["today", "week", "month", "year"]
 

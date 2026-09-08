@@ -7,7 +7,7 @@ import { CustomerTable } from "@/components/customers/customer-table"
 import { DataPagination } from "@/components/shared/data-pagination"
 import { listCustomers, getAcquisitionSources, type CustomerListParams } from "@/lib/queries/customers"
 
-export const metadata: Metadata = { title: "Customers — Atelier CRM" }
+export const metadata: Metadata = { title: "Customers — Atelier" }
 
 const PAGE_SIZE = 20
 

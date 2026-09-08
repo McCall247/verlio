@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { NotImplementedPlaceholder } from "@/components/shared/not-implemented-placeholder"
 
-export const metadata: Metadata = { title: "Reports — Atelier CRM" }
+export const metadata: Metadata = { title: "Reports — Atelier" }
 
 export default function ReportsPage() {
   return (

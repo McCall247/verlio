@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { MailCheckIcon } from "lucide-react"
 
-export const metadata: Metadata = { title: "Check your email — Atelier CRM" }
+export const metadata: Metadata = { title: "Check your email — Atelier" }
 
 export default function CheckEmailPage() {
   return (

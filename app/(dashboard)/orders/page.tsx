@@ -8,7 +8,7 @@ import { DataPagination } from "@/components/shared/data-pagination"
 import { listOrders, type OrderListParams } from "@/lib/queries/orders"
 import { getCurrentBusiness } from "@/lib/auth/dal"
 
-export const metadata: Metadata = { title: "Orders — Atelier CRM" }
+export const metadata: Metadata = { title: "Orders — Atelier" }
 
 const PAGE_SIZE = 20
 

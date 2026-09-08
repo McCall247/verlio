@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { BusinessSettingsForm } from "@/components/settings/business-settings-form"
 import { getCurrentBusiness } from "@/lib/auth/dal"
 
-export const metadata: Metadata = { title: "Settings — Atelier CRM" }
+export const metadata: Metadata = { title: "Settings — Atelier" }
 
 const CONFIG_LINKS = [
   { href: "/settings/acquisition-sources", label: "Acquisition sources", icon: MegaphoneIcon },

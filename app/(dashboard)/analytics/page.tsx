@@ -10,7 +10,7 @@ import { getRevenueAnalytics, getAcquisitionSourceStats, getProfitAndLoss } from
 import { getCurrentBusiness } from "@/lib/auth/dal"
 import { resolveRangePreset, type RangePreset } from "@/lib/date-ranges"
 
-export const metadata: Metadata = { title: "Analytics — Atelier CRM" }
+export const metadata: Metadata = { title: "Analytics — Atelier" }
 
 const VALID_PRESETS: RangePreset[] = ["today", "week", "month", "last_month", "year", "last_year", "custom"]
 

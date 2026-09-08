@@ -6,7 +6,7 @@ import { listExpenses, getExpenseCategories, getExpensesTotal } from "@/lib/quer
 import { getCurrentBusiness } from "@/lib/auth/dal"
 import { formatMoney } from "@/lib/format"
 
-export const metadata: Metadata = { title: "Expenses — Atelier CRM" }
+export const metadata: Metadata = { title: "Expenses — Atelier" }
 
 const PAGE_SIZE = 30
 

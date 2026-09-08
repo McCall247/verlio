@@ -9,7 +9,7 @@ import { PAYMENT_METHOD_LABELS } from "@/lib/constants"
 import { formatDate, formatMoney } from "@/lib/format"
 import { cn } from "@/lib/utils"
 
-export const metadata: Metadata = { title: "Payments — Atelier CRM" }
+export const metadata: Metadata = { title: "Payments — Atelier" }
 
 const PAGE_SIZE = 30
 

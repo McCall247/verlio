@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { OrderForm } from "@/components/orders/order-form"
 import { listAllCustomersForPicker } from "@/lib/queries/customers"
 
-export const metadata: Metadata = { title: "New order — Atelier CRM" }
+export const metadata: Metadata = { title: "New order — Atelier" }
 
 export default async function NewOrderPage({
   searchParams,

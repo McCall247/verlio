@@ -76,7 +76,7 @@ export function LoginForm() {
       </div>
 
       <p className="text-center text-sm text-muted-foreground">
-        New to Atelier CRM?{" "}
+        New to Atelier?{" "}
         <Link href="/signup" className="font-medium text-foreground underline underline-offset-4">
           Create an account
         </Link>

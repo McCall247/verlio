@@ -5,7 +5,7 @@ import { OrderForm } from "@/components/orders/order-form"
 import { getOrderDetail } from "@/lib/queries/orders"
 import { listAllCustomersForPicker } from "@/lib/queries/customers"
 
-export const metadata: Metadata = { title: "Edit order — Atelier CRM" }
+export const metadata: Metadata = { title: "Edit order — Atelier" }
 
 export default async function EditOrderPage({
   params,

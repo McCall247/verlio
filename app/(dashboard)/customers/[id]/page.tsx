@@ -13,7 +13,7 @@ import { getCurrentBusiness } from "@/lib/auth/dal"
 import { LIFECYCLE_STATUS_LABELS } from "@/lib/constants"
 import { formatDate } from "@/lib/format"
 
-export const metadata: Metadata = { title: "Customer — Atelier CRM" }
+export const metadata: Metadata = { title: "Customer — Atelier" }
 
 export default async function CustomerDetailPage({
   params,

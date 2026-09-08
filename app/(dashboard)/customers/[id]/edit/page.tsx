@@ -5,7 +5,7 @@ import { CustomerForm } from "@/components/customers/customer-form"
 import { getCustomerDetail, getAcquisitionSources } from "@/lib/queries/customers"
 import { getCurrentBusiness } from "@/lib/auth/dal"
 
-export const metadata: Metadata = { title: "Edit customer — Atelier CRM" }
+export const metadata: Metadata = { title: "Edit customer — Atelier" }
 
 export default async function EditCustomerPage({
   params,
