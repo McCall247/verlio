@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Field, FieldGroup, FieldLabel, FieldError } from "@/components/ui/field"
 import { CustomerPicker } from "@/components/orders/customer-picker"
+import { CurrencyInput } from "@/components/shared/currency-input"
 
 type CustomerOption = { id: string; full_name: string }
 
@@ -119,19 +120,18 @@ export function OrderForm({
 
         <Field>
           <FieldLabel htmlFor="sellingPrice">Selling price</FieldLabel>
-          <div className="relative">
-            <span className="pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2 text-sm text-muted-foreground">
-              {currencySymbol}
-            </span>
-            <Input
-              id="sellingPrice"
-              type="number"
-              step="0.01"
-              min="0"
-              className="pl-7"
-              {...register("sellingPrice")}
-            />
-          </div>
+          <Controller
+            control={control}
+            name="sellingPrice"
+            render={({ field }) => (
+              <CurrencyInput
+                id="sellingPrice"
+                currencySymbol={currencySymbol}
+                value={Number(field.value) || 0}
+                onChange={field.onChange}
+              />
+            )}
+          />
           <FieldError errors={errors.sellingPrice ? [errors.sellingPrice] : undefined} />
         </Field>
 
