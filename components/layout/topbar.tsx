@@ -42,7 +42,12 @@ export function Topbar({
       </div>
       <div className="hidden md:block" />
       <div className="flex items-center gap-3">
-        <span className="hidden text-sm text-muted-foreground sm:inline">{userLabel}</span>
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--brand-accent-soft)] text-sm font-semibold text-[var(--brand-accent)]">
+            {userLabel.trim().charAt(0).toUpperCase() || "?"}
+          </span>
+          <span className="hidden text-sm font-medium sm:inline">{userLabel}</span>
+        </div>
         <form action={logout}>
           <Button variant="ghost" size="icon" type="submit" title="Log out" aria-label="Log out">
             <LogOutIcon className="size-4" />

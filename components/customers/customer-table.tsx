@@ -11,7 +11,7 @@ const LIFECYCLE_BADGE_CLASS: Record<LifecycleStatus, string> = {
   new: "bg-blue-50 text-blue-700 border-blue-200",
   active: "bg-emerald-50 text-emerald-700 border-emerald-200",
   returning: "bg-violet-50 text-violet-700 border-violet-200",
-  inactive: "bg-zinc-100 text-zinc-600 border-zinc-200",
+  inactive: "bg-stone-100 text-stone-600 border-stone-200",
 }
 
 export function CustomerTable({ customers }: { customers: CustomerWithLifecycle[] }) {

@@ -8,7 +8,7 @@ import {
 import { cn } from "@/lib/utils"
 
 const PRODUCTION_BADGE_CLASS: Record<ProductionStatus, string> = {
-  inquiry: "bg-zinc-100 text-zinc-600 border-zinc-200",
+  inquiry: "bg-stone-100 text-stone-600 border-stone-200",
   confirmed: "bg-blue-50 text-blue-700 border-blue-200",
   measurements: "bg-blue-50 text-blue-700 border-blue-200",
   design: "bg-indigo-50 text-indigo-700 border-indigo-200",
@@ -26,7 +26,7 @@ const PAYMENT_BADGE_CLASS: Record<PaymentStatus, string> = {
   unpaid: "bg-red-50 text-red-700 border-red-200",
   partially_paid: "bg-amber-50 text-amber-700 border-amber-200",
   paid: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  refunded: "bg-zinc-100 text-zinc-600 border-zinc-200",
+  refunded: "bg-stone-100 text-stone-600 border-stone-200",
 }
 
 export function ProductionStatusBadge({ status, className }: { status: ProductionStatus; className?: string }) {

@@ -55,30 +55,33 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #ffffff;
+  --foreground: #211712;
+  --card: #ffffff;
+  --card-foreground: #211712;
+  --popover: #ffffff;
+  --popover-foreground: #211712;
+  --primary: #211712;
+  --primary-foreground: #faf6f0;
+  --secondary: #f5efe7;
+  --secondary-foreground: #211712;
+  --muted: #f5efe7;
+  --muted-foreground: #7a6e60;
+  --accent: #f4e4d4;
+  --accent-foreground: #211712;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #e8ded2;
+  --input: #e8ded2;
+  --ring: #c9b8a3;
   --chart-1: #2a78d6;
   --chart-2: #eb6834;
   --chart-3: #1baf7a;
   --chart-4: #eda100;
   --chart-5: #e87ba4;
   --radius: 0.625rem;
+  /* Brand terracotta accent, used for icon badges, section-label rules, and highlights app-wide. */
+  --brand-accent: #a9835b;
+  --brand-accent-soft: #f4e4d4;
   /* Warm editorial palette, scoped to the (auth) route group only. */
   --auth-panel: #211712;
   --auth-panel-foreground: #f5ede4;
@@ -86,12 +89,12 @@
   --auth-accent: #c17a54;
   --auth-cream: #faf6f0;
   --auth-cream-border: #e8ded2;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #211712;
+  --sidebar-primary: #211712;
+  --sidebar-primary-foreground: #faf6f0;
+  --sidebar-accent: #f5efe7;
+  --sidebar-accent-foreground: #211712;
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
