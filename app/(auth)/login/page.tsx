@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Log in — Verlio" }
 export default function LoginPage() {
   return (
     <>
-      <AuthHeader eyebrow="Business sign in" title="Welcome back" description="Log in to your business dashboard." />
+      <AuthHeader eyebrow="Sign in" title="Welcome back" description="Sign in to manage your business." />
       <LoginForm />
     </>
   )
