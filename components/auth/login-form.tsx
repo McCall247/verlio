@@ -44,7 +44,7 @@ export function LoginForm() {
           <FieldLabel htmlFor="email" className={LABEL_CLASS}>
             Email
           </FieldLabel>
-          <Input id="email" type="email" placeholder="you@studio.com" {...register("email")} />
+          <Input id="email" type="email" placeholder="you@business.com" {...register("email")} />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
         </Field>
 
@@ -76,7 +76,7 @@ export function LoginForm() {
       </div>
 
       <p className="text-center text-sm text-muted-foreground">
-        New to Atelier?{" "}
+        New to Verlio?{" "}
         <Link href="/signup" className="font-medium text-foreground underline underline-offset-4">
           Create an account
         </Link>

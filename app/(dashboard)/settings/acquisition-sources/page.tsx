@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ConfigListManager } from "@/components/settings/config-list-manager"
 import { listConfigItems } from "@/lib/queries/settings-lists"
 
-export const metadata: Metadata = { title: "Acquisition sources — Atelier" }
+export const metadata: Metadata = { title: "Acquisition sources — Verlio" }
 
 export default async function AcquisitionSourcesSettingsPage() {
   const items = await listConfigItems("acquisition_sources")

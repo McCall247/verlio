@@ -6,7 +6,7 @@ import { getOrderDetail } from "@/lib/queries/orders"
 import { listAllCustomersForPicker } from "@/lib/queries/customers"
 import { getCurrentBusiness } from "@/lib/auth/dal"
 
-export const metadata: Metadata = { title: "Edit order — Atelier" }
+export const metadata: Metadata = { title: "Edit order — Verlio" }
 
 export default async function EditOrderPage({
   params,

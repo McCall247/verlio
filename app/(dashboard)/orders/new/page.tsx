@@ -4,7 +4,7 @@ import { OrderForm } from "@/components/orders/order-form"
 import { listAllCustomersForPicker } from "@/lib/queries/customers"
 import { getCurrentBusiness } from "@/lib/auth/dal"
 
-export const metadata: Metadata = { title: "New order — Atelier" }
+export const metadata: Metadata = { title: "New order — Verlio" }
 
 export default async function NewOrderPage({
   searchParams,

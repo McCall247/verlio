@@ -15,7 +15,7 @@ import { getCurrentBusiness } from "@/lib/auth/dal"
 import { PAYMENT_STATUS_LABELS, PRODUCTION_STATUS_LABELS } from "@/lib/constants"
 import { formatDate, formatRelative } from "@/lib/format"
 
-export const metadata: Metadata = { title: "Order — Atelier" }
+export const metadata: Metadata = { title: "Order — Verlio" }
 
 export default async function OrderDetailPage({
   params,

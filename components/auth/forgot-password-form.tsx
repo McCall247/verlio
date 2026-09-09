@@ -62,7 +62,7 @@ export function ForgotPasswordForm() {
           <FieldLabel htmlFor="email" className={LABEL_CLASS}>
             Email
           </FieldLabel>
-          <Input id="email" type="email" placeholder="you@studio.com" {...register("email")} />
+          <Input id="email" type="email" placeholder="you@business.com" {...register("email")} />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
         </Field>
 

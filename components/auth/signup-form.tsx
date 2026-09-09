@@ -44,7 +44,7 @@ export function SignupForm() {
           <FieldLabel htmlFor="businessName" className={LABEL_CLASS}>
             Business name
           </FieldLabel>
-          <Input id="businessName" placeholder="Zaria Couture" {...register("businessName")} />
+          <Input id="businessName" placeholder="Zaria & Co." {...register("businessName")} />
           <FieldError errors={errors.businessName ? [errors.businessName] : undefined} />
         </Field>
 
@@ -60,7 +60,7 @@ export function SignupForm() {
           <FieldLabel htmlFor="email" className={LABEL_CLASS}>
             Email
           </FieldLabel>
-          <Input id="email" type="email" placeholder="you@studio.com" {...register("email")} />
+          <Input id="email" type="email" placeholder="you@business.com" {...register("email")} />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
         </Field>
 
@@ -75,7 +75,7 @@ export function SignupForm() {
         {formError && <p className="text-sm text-destructive">{formError}</p>}
 
         <Button type="submit" disabled={isPending} className="w-full">
-          {isPending ? "Creating your studio…" : "Create account"}
+          {isPending ? "Creating your account…" : "Create account"}
           {!isPending && <ArrowRightIcon data-icon="inline-end" className="size-4" />}
         </Button>
       </FieldGroup>

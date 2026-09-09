@@ -4,7 +4,7 @@ import { CustomerForm } from "@/components/customers/customer-form"
 import { getAcquisitionSources } from "@/lib/queries/customers"
 import { getAuthedProfile } from "@/lib/auth/dal"
 
-export const metadata: Metadata = { title: "Add customer — Atelier" }
+export const metadata: Metadata = { title: "Add customer — Verlio" }
 
 export default async function NewCustomerPage() {
   const [{ profile }, sources] = await Promise.all([getAuthedProfile(), getAcquisitionSources()])

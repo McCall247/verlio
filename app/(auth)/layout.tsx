@@ -36,9 +36,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="relative flex flex-col justify-between overflow-hidden bg-auth-panel px-6 py-6 text-auth-panel-foreground sm:px-8 sm:py-8 md:px-12 md:py-12">
         <div className="flex items-center gap-2.5">
           <div className="flex size-8 items-center justify-center rounded-md border border-auth-accent text-sm font-semibold text-auth-accent">
-            A
+            V
           </div>
-          <span className="text-sm font-semibold tracking-[0.1em] uppercase">Atelier</span>
+          <span className="text-sm font-semibold tracking-[0.1em] uppercase">Verlio</span>
         </div>
 
         <div className="hidden md:block">
@@ -51,7 +51,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             <em className="text-auth-accent italic">crafted</em> with intention.
           </h2>
           <p className="mt-4 hidden max-w-sm text-sm text-auth-panel-muted md:block">
-            Customer, order, and revenue management for fashion designers who care about the details.
+            Customer, order, and revenue management for business owners who care about the details.
           </p>
         </div>
       </div>

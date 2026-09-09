@@ -3,7 +3,7 @@ import { AuthHeader } from "@/components/auth/auth-header"
 import { ResetPasswordForm } from "@/components/auth/reset-password-form"
 import { createClient } from "@/lib/supabase/server"
 
-export const metadata: Metadata = { title: "Set a new password — Atelier" }
+export const metadata: Metadata = { title: "Set a new password — Verlio" }
 
 export default async function ResetPasswordPage({
   searchParams,
