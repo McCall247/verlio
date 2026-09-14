@@ -4,11 +4,13 @@ import {
   ShoppingBagIcon,
   WalletIcon,
   ReceiptIcon,
+  BanknoteIcon,
   BarChart3Icon,
   FileTextIcon,
   SettingsIcon,
   type LucideIcon,
 } from "lucide-react"
+import type { AccountType } from "@/lib/queries/dashboard"
 
 export type NavItem = {
   label: string
@@ -17,7 +19,7 @@ export type NavItem = {
   comingSoon?: boolean
 }
 
-export const NAV_ITEMS: NavItem[] = [
+const BUSINESS_NAV_ITEMS: NavItem[] = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboardIcon },
   { label: "Customers", href: "/customers", icon: UsersIcon },
   { label: "Orders", href: "/orders", icon: ShoppingBagIcon },
@@ -27,6 +29,17 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Reports", href: "/reports", icon: FileTextIcon, comingSoon: true },
   { label: "Settings", href: "/settings", icon: SettingsIcon },
 ]
+
+const PERSONAL_NAV_ITEMS: NavItem[] = [
+  { label: "Overview", href: "/dashboard", icon: LayoutDashboardIcon },
+  { label: "Income", href: "/income", icon: BanknoteIcon },
+  { label: "Expenses", href: "/expenses", icon: ReceiptIcon },
+  { label: "Settings", href: "/settings", icon: SettingsIcon },
+]
+
+export function getNavItems(accountType: AccountType): NavItem[] {
+  return accountType === "personal" ? PERSONAL_NAV_ITEMS : BUSINESS_NAV_ITEMS
+}
 
 export const PRODUCTION_STATUSES = [
   "inquiry",

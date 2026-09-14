@@ -2,15 +2,17 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { NAV_ITEMS } from "@/lib/constants"
+import { getNavItems } from "@/lib/constants"
+import type { AccountType } from "@/lib/queries/dashboard"
 import { cn } from "@/lib/utils"
 
-export function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
+export function NavLinks({ accountType, onNavigate }: { accountType: AccountType; onNavigate?: () => void }) {
   const pathname = usePathname()
+  const navItems = getNavItems(accountType)
 
   return (
     <nav className="flex flex-col gap-1">
-      {NAV_ITEMS.map((item) => {
+      {navItems.map((item) => {
         const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
         const Icon = item.icon
 

@@ -22,13 +22,13 @@ export async function signup(values: unknown) {
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid input" }
   }
-  const { businessName, fullName, email, password } = parsed.data
+  const { accountType, businessName, fullName, email, password } = parsed.data
 
   const supabase = await createClient()
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { business_name: businessName, full_name: fullName } },
+    options: { data: { account_type: accountType, business_name: businessName, full_name: fullName } },
   })
 
   if (error) {

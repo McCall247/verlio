@@ -7,13 +7,16 @@ import { Button } from "@/components/ui/button"
 import { NavLinks } from "@/components/layout/nav-links"
 import { BrandMark } from "@/components/layout/brand-mark"
 import { logout } from "@/actions/auth"
+import type { AccountType } from "@/lib/queries/dashboard"
 
 export function Topbar({
   businessName,
   userLabel,
+  accountType,
 }: {
   businessName: string
   userLabel: string
+  accountType: AccountType
 }) {
   const [open, setOpen] = useState(false)
 
@@ -34,7 +37,7 @@ export function Topbar({
               <BrandMark name={businessName} />
             </div>
             <div className="px-3 py-4">
-              <NavLinks onNavigate={() => setOpen(false)} />
+              <NavLinks accountType={accountType} onNavigate={() => setOpen(false)} />
             </div>
           </SheetContent>
         </Sheet>

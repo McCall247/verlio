@@ -9,8 +9,8 @@ export default function SignupPage() {
     <>
       <AuthHeader
         eyebrow="Get started"
-        title="Set up your business"
-        description="Start managing customers, orders, and revenue in one place."
+        title="Create your account"
+        description="Track a business or your own money — your call."
       />
       <SignupForm />
     </>

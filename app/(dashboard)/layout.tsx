@@ -8,9 +8,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <div className="flex min-h-screen">
-      <Sidebar businessName={business.name} />
+      <Sidebar businessName={business.name} accountType={business.account_type} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar businessName={business.name} userLabel={profile.full_name ?? "Account"} />
+        <Topbar
+          businessName={business.name}
+          userLabel={profile.full_name ?? "Account"}
+          accountType={business.account_type}
+        />
         <main className="flex-1 bg-background p-4 md:p-8">{children}</main>
       </div>
     </div>

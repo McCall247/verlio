@@ -1,7 +1,8 @@
 import { z } from "zod"
 
 export const signupSchema = z.object({
-  businessName: z.string().trim().min(2, "Business name must be at least 2 characters"),
+  accountType: z.enum(["business", "personal"]),
+  businessName: z.string().trim().min(2, "This must be at least 2 characters"),
   fullName: z.string().trim().min(2, "Your name must be at least 2 characters"),
   email: z.email("Enter a valid email address").trim(),
   password: z.string().min(8, "Password must be at least 8 characters"),

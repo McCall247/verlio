@@ -4,15 +4,31 @@ import { useState, useTransition } from "react"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowRightIcon } from "lucide-react"
+import { ArrowRightIcon, Building2Icon, UserIcon } from "lucide-react"
 import { signup } from "@/actions/auth"
 import { signupSchema, type SignupInput } from "@/lib/validations/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Field, FieldGroup, FieldLabel, FieldError } from "@/components/ui/field"
 import { PasswordInput } from "@/components/auth/password-input"
+import { cn } from "@/lib/utils"
 
 const LABEL_CLASS = "text-xs font-medium tracking-[0.1em] text-muted-foreground uppercase"
+
+const ACCOUNT_TYPES = [
+  {
+    value: "business" as const,
+    label: "Business",
+    description: "Customers, orders, payments",
+    icon: Building2Icon,
+  },
+  {
+    value: "personal" as const,
+    label: "Personal",
+    description: "Income, spending, savings",
+    icon: UserIcon,
+  },
+]
 
 export function SignupForm() {
   const [isPending, startTransition] = useTransition()
@@ -21,11 +37,16 @@ export function SignupForm() {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<SignupInput>({
     resolver: zodResolver(signupSchema),
-    defaultValues: { businessName: "", fullName: "", email: "", password: "" },
+    defaultValues: { accountType: "business", businessName: "", fullName: "", email: "", password: "" },
   })
+
+  const accountType = watch("accountType")
+  const isPersonal = accountType === "personal"
 
   const onSubmit = (values: SignupInput) => {
     setFormError(null)
@@ -41,10 +62,39 @@ export function SignupForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FieldGroup>
         <Field>
+          <FieldLabel className={LABEL_CLASS}>What are you tracking?</FieldLabel>
+          <div className="grid grid-cols-2 gap-3">
+            {ACCOUNT_TYPES.map((type) => {
+              const Icon = type.icon
+              const selected = accountType === type.value
+              return (
+                <button
+                  key={type.value}
+                  type="button"
+                  onClick={() => setValue("accountType", type.value)}
+                  className={cn(
+                    "flex flex-col items-start gap-1 rounded-lg border p-3 text-left transition-colors",
+                    selected ? "border-[var(--brand-accent)] bg-[var(--brand-accent-soft)]" : "border-input hover:bg-muted"
+                  )}
+                >
+                  <Icon className={cn("size-4", selected ? "text-[var(--brand-accent)]" : "text-muted-foreground")} />
+                  <span className="text-sm font-medium">{type.label}</span>
+                  <span className="text-xs text-muted-foreground">{type.description}</span>
+                </button>
+              )
+            })}
+          </div>
+        </Field>
+
+        <Field>
           <FieldLabel htmlFor="businessName" className={LABEL_CLASS}>
-            Business name
+            {isPersonal ? "Account name" : "Business name"}
           </FieldLabel>
-          <Input id="businessName" placeholder="Zaria & Co." {...register("businessName")} />
+          <Input
+            id="businessName"
+            placeholder={isPersonal ? "My Finances" : "Zaria & Co."}
+            {...register("businessName")}
+          />
           <FieldError errors={errors.businessName ? [errors.businessName] : undefined} />
         </Field>
 

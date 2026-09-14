@@ -1,6 +1,8 @@
 import "server-only"
 import { createClient } from "@/lib/supabase/server"
 
+export type AccountType = "business" | "personal"
+
 export type DashboardPeriod = "today" | "week" | "month" | "year"
 
 export type DashboardSummary = {
@@ -19,4 +21,20 @@ export async function getDashboardSummary(period: DashboardPeriod) {
   const { data, error } = await supabase.rpc("get_dashboard_summary", { p_period: period })
   if (error) throw error
   return data as unknown as DashboardSummary
+}
+
+export type PersonalSummary = {
+  period: string
+  range: { start: string; end: string }
+  income: { current: number; previous: number }
+  expenses: { current: number; previous: number }
+  net: { current: number; previous: number }
+  all_time_balance: number
+}
+
+export async function getPersonalSummary(period: DashboardPeriod) {
+  const supabase = await createClient()
+  const { data, error } = await supabase.rpc("get_personal_summary", { p_period: period })
+  if (error) throw error
+  return data as unknown as PersonalSummary
 }

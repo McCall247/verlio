@@ -1,20 +1,27 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRightIcon, TagIcon, ReceiptIcon, MegaphoneIcon } from "lucide-react"
+import { ChevronRightIcon, TagIcon, ReceiptIcon, MegaphoneIcon, BanknoteIcon } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { BusinessSettingsForm } from "@/components/settings/business-settings-form"
 import { getCurrentBusiness } from "@/lib/auth/dal"
 
 export const metadata: Metadata = { title: "Settings — Verlio" }
 
-const CONFIG_LINKS = [
+const BUSINESS_CONFIG_LINKS = [
   { href: "/settings/acquisition-sources", label: "Acquisition sources", icon: MegaphoneIcon },
   { href: "/settings/cost-categories", label: "Production cost categories", icon: TagIcon },
   { href: "/settings/expense-categories", label: "Expense categories", icon: ReceiptIcon },
 ]
 
+const PERSONAL_CONFIG_LINKS = [
+  { href: "/settings/income-categories", label: "Income categories", icon: BanknoteIcon },
+  { href: "/settings/expense-categories", label: "Expense categories", icon: ReceiptIcon },
+]
+
 export default async function SettingsPage() {
   const business = await getCurrentBusiness()
+  const isPersonal = business.account_type === "personal"
+  const configLinks = isPersonal ? PERSONAL_CONFIG_LINKS : BUSINESS_CONFIG_LINKS
 
   return (
     <div className="flex flex-col gap-6">
@@ -22,10 +29,11 @@ export default async function SettingsPage() {
 
       <Card className="max-w-2xl">
         <CardHeader>
-          <CardTitle className="text-base">Business essentials</CardTitle>
+          <CardTitle className="text-base">{isPersonal ? "Account essentials" : "Business essentials"}</CardTitle>
         </CardHeader>
         <CardContent>
           <BusinessSettingsForm
+            isPersonal={isPersonal}
             defaultValues={{
               name: business.name,
               currencyCode: business.currency_code,
@@ -42,7 +50,7 @@ export default async function SettingsPage() {
           <CardTitle className="text-base">Configurable lists</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col divide-y p-0">
-          {CONFIG_LINKS.map((link) => {
+          {configLinks.map((link) => {
             const Icon = link.icon
             return (
               <Link

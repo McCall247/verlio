@@ -1,7 +1,7 @@
 import "server-only"
 import { createClient } from "@/lib/supabase/server"
 
-export type ConfigListTable = "acquisition_sources" | "cost_categories" | "expense_categories"
+export type ConfigListTable = "acquisition_sources" | "cost_categories" | "expense_categories" | "income_categories"
 
 export async function listConfigItems(table: ConfigListTable) {
   const supabase = await createClient()

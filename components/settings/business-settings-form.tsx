@@ -11,7 +11,13 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Field, FieldGroup, FieldLabel, FieldError, FieldDescription } from "@/components/ui/field"
 
-export function BusinessSettingsForm({ defaultValues }: { defaultValues: BusinessSettingsInput }) {
+export function BusinessSettingsForm({
+  defaultValues,
+  isPersonal = false,
+}: {
+  defaultValues: BusinessSettingsInput
+  isPersonal?: boolean
+}) {
   const [isPending, startTransition] = useTransition()
 
   const {
@@ -38,7 +44,7 @@ export function BusinessSettingsForm({ defaultValues }: { defaultValues: Busines
     <form onSubmit={handleSubmit(onSubmit)}>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="name">Business name</FieldLabel>
+          <FieldLabel htmlFor="name">{isPersonal ? "Account name" : "Business name"}</FieldLabel>
           <Input id="name" {...register("name")} />
           <FieldError errors={errors.name ? [errors.name] : undefined} />
         </Field>
@@ -63,12 +69,14 @@ export function BusinessSettingsForm({ defaultValues }: { defaultValues: Busines
           <FieldError errors={errors.timezone ? [errors.timezone] : undefined} />
         </Field>
 
-        <Field>
-          <FieldLabel htmlFor="inactiveCustomerDays">Inactive after (days)</FieldLabel>
-          <Input id="inactiveCustomerDays" type="number" min="1" {...register("inactiveCustomerDays")} />
-          <FieldDescription>Customers with no order in this many days are marked inactive.</FieldDescription>
-          <FieldError errors={errors.inactiveCustomerDays ? [errors.inactiveCustomerDays] : undefined} />
-        </Field>
+        {!isPersonal && (
+          <Field>
+            <FieldLabel htmlFor="inactiveCustomerDays">Inactive after (days)</FieldLabel>
+            <Input id="inactiveCustomerDays" type="number" min="1" {...register("inactiveCustomerDays")} />
+            <FieldDescription>Customers with no order in this many days are marked inactive.</FieldDescription>
+            <FieldError errors={errors.inactiveCustomerDays ? [errors.inactiveCustomerDays] : undefined} />
+          </Field>
+        )}
 
         <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
           {isPending ? "Saving…" : "Save changes"}

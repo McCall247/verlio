@@ -79,6 +79,7 @@ export type Database = {
       }
       businesses: {
         Row: {
+          account_type: Database["public"]["Enums"]["account_type"]
           created_at: string
           currency_code: string
           currency_symbol: string
@@ -90,6 +91,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          account_type?: Database["public"]["Enums"]["account_type"]
           created_at?: string
           currency_code?: string
           currency_symbol?: string
@@ -101,6 +103,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          account_type?: Database["public"]["Enums"]["account_type"]
           created_at?: string
           currency_code?: string
           currency_symbol?: string
@@ -373,6 +376,102 @@ export type Database = {
           },
           {
             foreignKeyName: "expenses_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      income_categories: {
+        Row: {
+          business_id: string
+          created_at: string
+          id: string
+          is_active: boolean
+          is_default: boolean
+          name: string
+          sort_order: number
+        }
+        Insert: {
+          business_id: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          is_default?: boolean
+          name: string
+          sort_order?: number
+        }
+        Update: {
+          business_id?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          is_default?: boolean
+          name?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "income_categories_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      income_entries: {
+        Row: {
+          amount: number
+          business_id: string
+          category_id: string | null
+          category_name: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          income_date: string
+        }
+        Insert: {
+          amount: number
+          business_id: string
+          category_id?: string | null
+          category_name: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          income_date?: string
+        }
+        Update: {
+          amount?: number
+          business_id?: string
+          category_id?: string | null
+          category_name?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          income_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "income_entries_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "income_entries_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "income_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "income_entries_created_by_fkey"
             columns: ["created_by"]
             isOneToOne: false
             referencedRelation: "profiles"
@@ -833,6 +932,7 @@ export type Database = {
       }
       get_current_business_id: { Args: never; Returns: string }
       get_dashboard_summary: { Args: { p_period: string }; Returns: Json }
+      get_personal_summary: { Args: { p_period: string }; Returns: Json }
       get_profit_and_loss: {
         Args: { p_end: string; p_start: string }
         Returns: Json
@@ -851,8 +951,13 @@ export type Database = {
         Args: { p_business_id: string }
         Returns: undefined
       }
+      seed_personal_defaults: {
+        Args: { p_business_id: string }
+        Returns: undefined
+      }
     }
     Enums: {
+      account_type: "business" | "personal"
       payment_method: "cash" | "bank_transfer" | "card" | "pos" | "other"
       payment_status: "unpaid" | "partially_paid" | "paid" | "refunded"
       production_status:
@@ -999,6 +1104,7 @@ export const Constants = {
   },
   public: {
     Enums: {
+      account_type: ["business", "personal"],
       payment_method: ["cash", "bank_transfer", "card", "pos", "other"],
       payment_status: ["unpaid", "partially_paid", "paid", "refunded"],
       production_status: [
