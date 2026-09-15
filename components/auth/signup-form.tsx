@@ -92,7 +92,7 @@ export function SignupForm() {
           </FieldLabel>
           <Input
             id="businessName"
-            placeholder={isPersonal ? "My Finances" : "Zaria & Co."}
+            placeholder="Type here"
             {...register("businessName")}
           />
           <FieldError errors={errors.businessName ? [errors.businessName] : undefined} />
