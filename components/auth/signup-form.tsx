@@ -102,7 +102,7 @@ export function SignupForm() {
           <FieldLabel htmlFor="fullName" className={LABEL_CLASS}>
             Your name
           </FieldLabel>
-          <Input id="fullName" placeholder="Amara Bello" {...register("fullName")} />
+          <Input id="fullName" placeholder="Type here" {...register("fullName")} />
           <FieldError errors={errors.fullName ? [errors.fullName] : undefined} />
         </Field>
 
